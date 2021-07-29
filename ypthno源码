@@ -1,0 +1,139 @@
+import os
+import sys
+from tkinter import *
+from turtle import *
+import datetime
+import time
+print("--------------------------------------------")
+print("| yp编译器               版本：1.7 Dev版6   |")
+print("| 作者:小金                 编写者：小金    |")
+print("| 通过输入更新可更新至 1.7Dev版 6           |")
+print("| 现已支持在线推送更新！                    |")
+print("--------------------------------------------")
+key = "xxxxxxxxxx"
+with open('key.yp') as file_obj:
+    content1 = file_obj.read()
+    if content1 == "xxxxxxxxxxx":
+        print("已激活")
+    else:
+        print("您还未激活")
+while True:
+    n = input("[vip] yp>")
+    if n == "更新":
+        print("请到github.com上搜索ypthno下载最新版本")
+
+    if n == "输出":
+        n1 = input("yp>输出")
+        print(n1)
+
+    if n == "帮助":
+        print("----yp帮助---第(1/1)页----")
+        print("  帮助 [页码]:获取帮助")
+        print("  输出，现已支持")
+        print("  退出，退出yp程序")
+        print("  窗口，打开一个窗口")
+        print("  现已支持无线窗口但bug很多")
+        print("  以后会更新更多!")
+        print("  更新日志,查看更新内容")
+        print("  文本编辑器,ypthno自带文本编辑器")
+        print("  运行ypthno text.yp,打印ypthno文本")
+        print("  运行ypthno yp文本说明,打印文本的说明")
+        print("  版本，查看ypthno版本")
+        print("  激活,激活ypthno")
+        print("  查看激活码,查看ypthno激活码")
+        print("  dir,显示盘符下的文件")
+        print("  以后会考虑更新dos指令")
+        print("  获取当前日期和时间,获取当前日期和时间")
+        print("  关于,关于ypthno的图标")
+    if n == "退出":
+        print("已退出此程序")
+        sys.exit()
+        sys.exit(0)
+#以后写else:
+#print("未知的命令")
+    if n == "窗口":
+        print("已打开窗口")
+        MainForm=tkinter.Tk()
+        MainForm.geometry("250x150")
+        MainForm.mainloop()
+    if n == "更新日志":
+        print("-------------------------------")
+        print("|yp更新日志1.7Dev6            |")
+        print("|[/]加入关于,定了ypthno图标   |")
+        print("|[/]改进了图标png未gif        |")
+        print("|[*]修复无数bug               |")
+        print("|[*]更新了帮助                |")
+        print("-------------------------------")
+    if n == "版本":
+        print("ypthno 1.7 Dev 6 pro")
+
+    if n == "文本编辑器":
+        print("请打开本目录下的ypthno text.exe")
+
+    if n == "运行yp文件":
+        film = input("请输入您要打印的yp文本(尾缀必须为yp且在同一文件夹内格式为文件名+.yp):")
+        with open(film) as file_obj:
+            content = file_obj.read()
+            nh = ()
+            if content == "print"+nh:
+                print(content)
+    
+    if n == "运行ypthno yp文本说明":
+        print("说明:打开ypthno text然后输入任意内容，保存为text.yp警告:如果是别的名字无法运行")
+    
+    if n == "查看激活码":
+        with open('key.yp') as file_obj:
+            content2 = file_obj.read()
+            if content2 == 'xxxxxxxxx':
+                print("xxxxxxxxxxx")
+            else:
+                print("您还未激活")
+    if n == "激活":
+        key1 = input("请输入激活码:")
+        if key1 == "xxxxxxxx":
+            print("激活成功")
+            f = open('key.yp',mode = 'w')
+            f.write("xxxxxxxxxxxx")
+            f.close()
+        else:
+            print("您的激活码无效，或已经激活")
+
+    if n == "dir":
+        def TimeStampToTime(timestamp):
+            timeStruct = time.localtime(timestamp)
+            return time.strftime('%Y/%m/%d  %H:%M', timeStruct)
+
+# 绝对路径absPath 
+        print("读取盘符的格式为:盘符:\\ 警告,盘符必须大写,且在英文输入法中使用此命令")
+        absPath = input("请输入您想读取的盘符:")
+        for fileName in os.listdir(absPath):
+            fileAbsPath = os.path.join(absPath, fileName)
+            # >>> os.path.join('a','b') >>> 'a\\b'
+            dirModifyTime = TimeStampToTime(os.path.getmtime(fileAbsPath))
+
+            isDir = None
+            dirSize = None
+            if os.path.isdir(fileAbsPath):
+                isDir = '<DIR>'
+                dirSize = ''
+            if os.path.isfile(fileAbsPath):
+                isDir = ''
+                dirSize = str( format(os.path.getsize(fileAbsPath), ',') )
+
+            print(dirModifyTime, isDir.center(11, ' '), dirSize.rjust(8, ' '), fileName)
+
+    if n == "获取当前日期和时间":
+        now = time.strftime('%Y-%m-%d %H:%M:%S')
+        print(now)
+    if n == "关于":
+        window = Tk()
+        window.title("关于")
+        html_gif = PhotoImage(file="ypthno.gif")
+        label = Label(window, image = html_gif)
+        label.pack()
+        window.mainloop()
+        
+        
+        
+        
+        #注:xxxxxxxxx不是激活码，也不是正确的位数,如要激活请联系python_snhk
