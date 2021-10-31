@@ -1,6 +1,5 @@
-h15926201602@163.com
+h18171011305@outlook.com
 # ypthno
-h15926201602@163.com
 ypthno智能终端
 
 软件架构
